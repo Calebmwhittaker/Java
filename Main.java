@@ -122,7 +122,6 @@ public class Main {
 
         System.out.print("Principal: ");
         int principalCurrencyInput = scanner.nextInt();
-        String principalCurrencyFormat = NumberFormat.getCurrencyInstance().format(principalCurrencyInput);
 
         System.out.print("Annual Interest Rate: ");
         double annualInterestRateInput = scanner.nextDouble();
@@ -131,14 +130,9 @@ public class Main {
         int loanTerm = scanner.nextInt();
         int loanTermMonths = loanTerm * 12;
 
-        System.out.println("Your principal is: " + principalCurrencyFormat);
-        System.out.println("Your annual interest rate is: " + annualInterestRateInput + "%");
-        System.out.println("Your period is: " + loanTerm);
-
         double calculation = principalCurrencyInput
-                * ((annualInterestRateInput / 100) * (Math.pow((1 + (annualInterestRateInput / 100)), loanTermMonths)))
-                / (Math.pow((1 + (annualInterestRateInput / 100)), loanTermMonths) - 1);
-        System.out.println(calculation);
+                * ((annualInterestRateInput / 100 / 12) * (Math.pow((1 + (annualInterestRateInput / 100 / 12)), loanTermMonths)))
+                / (Math.pow((1 + (annualInterestRateInput / 100 / 12)), loanTermMonths) - 1);
         String mortgage = NumberFormat.getCurrencyInstance().format(calculation);
         System.out.println("Mortgage: " + mortgage);
     }
